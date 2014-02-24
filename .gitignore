@@ -1,0 +1,11 @@
+.rvmrc
+.vagrant/
+*.swp
+*.swa
+*.swb
+*.swo
+*.swn
+*.rdb
+*.beam
+/log/*.log
+/tmp
