@@ -38,7 +38,7 @@ close_shop(Pid) ->
     { 'DOWN', Ref, process, Pid, Reason } ->
       erlang:error(Reason)
   after 5000 ->
-      erlang:error(timeout)
+    erlang:error(timeout)
   end.
 
 %%% Server functions
