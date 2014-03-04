@@ -5,10 +5,10 @@
 -record(cat, { name, color=green, description }).
 
 %%% Client API
-start_link() -> spawn_link(fun init/0).
+start_link() -> my_server:start_link(?MODULE, []).
 
 %% Synchronous
-order_cat(pid,Name,Color,Description) ->
+order_cat(Pid,Name,Color,Description) ->
   my_server:call(Pid, { order, Name, Color, Description }).
 
 %% Asynchronous
