@@ -1,5 +1,5 @@
 defmodule Calc do
-  def rpn(list) when is_list(list) do
+  def rpn(list) when is_string(list) do
     IO.puts "Hello"
     [response] = List.foldl(String.split(list," "),[],&rpn(&1,&2))
     response
