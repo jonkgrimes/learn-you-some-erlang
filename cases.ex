@@ -8,7 +8,7 @@ defmodule Cases do
       true ->
         set
       false ->
-        [x|Set]
+        [x|set]
     end
   end
 
