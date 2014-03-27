@@ -19,11 +19,11 @@ defmodule Roman do
     convert_r(n,conversion,"")
   end
 
-  def convert_r(0,_,acc) do
+  defp convert_r(0,_,acc) do
     acc
   end
 
-  def convert_r(n,[h|t],acc) do
+  defp convert_r(n,[h|t],acc) do
     x = div(n,elem(h,0))
     value = elem(h,0)
     numeral = elem(h,1)
