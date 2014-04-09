@@ -1,19 +1,15 @@
 defmodule Trade.Trader do
   use GenFSM.Behaviour
 
-  defrecord State name: "",
-    other=nil,
-    own_items=[],
-    other_items=[],
-    monitor=nil,
-    from
+  defrecord State, name: "", other: nil, own_items: [],
+    other_items: [], monitor: nil, from: nil
 
   def start_link(name) do
     :gen_fsm.start_link(__MODULE__,[name],[])
   end
 
-  def trade(own_pid,other_pid)
-    :gen_fsm:sync_send_event(own_pid, { :negotiate, other_pid }, 30000)
+  def trade(own_pid,other_pid) do
+    :gen_fsm.sync_send_event(own_pid, { :negotiate, other_pid }, 30000)
   end
 
   # Callbacks
@@ -25,8 +21,8 @@ defmodule Trade.Trader do
   # Idle state
 
   def idle({ :ask_negotiate, other_pid },state) do
-    ref = monitor(process,other_pod)
-    notice(state,"#{other_pid} asked for a trade negotiation.")
+    ref = Process.monitor(other_pid)
+    notice(state,"asked for a trade negotiation.",[other_pid])
     { :next_state, :idle_wait, State.new(other: other_pid,monitor: ref) }
   end
 
@@ -36,7 +32,7 @@ defmodule Trade.Trader do
 
   # Private functions
 
-  defp notice(state[name: name],str,args) do
-    IO.puts "#{[name|args]} #{str}"
+  defp notice(state,str,args) do
+    IO.puts "#{[state.name|args]} #{str}"
   end
 end
