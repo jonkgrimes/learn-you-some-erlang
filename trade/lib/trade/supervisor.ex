@@ -9,7 +9,6 @@ defmodule Trade.Supervisor do
     children = [
       # Define workers and child supervisors to be supervised
       # worker(Trade.Worker, [])
-      worker(Trade.Trader,"Bob")
     ]
 
     # See http://elixir-lang.org/docs/stable/Supervisor.Behaviour.html

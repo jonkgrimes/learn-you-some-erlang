@@ -33,6 +33,6 @@ defmodule Trade.Trader do
   # Private functions
 
   defp notice(state,str,args) do
-    IO.puts "#{[state.name|args]} #{str}"
+    IO.puts "Message received"
   end
 end
