@@ -1,3 +1,3 @@
 defmodule Vertex do
-  defstruct value: nil, edges: []
+  defstruct name: nil, value: nil, edges: []
 end
