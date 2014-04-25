@@ -10,7 +10,12 @@ defmodule AlgorithimsTest do
   end
 
   test "ensure we can't add the same vertex twice" do
-    flunk
+    graph = %Graph{}
+
+    graph = Graph.add_vertex(graph,"Houston")
+    graph = Graph.add_vertex(graph,"Houston")
+
+    assert Enum.count(graph.vertices) == 1
   end
 
   test "get a vertex from the graph" do
@@ -19,7 +24,7 @@ defmodule AlgorithimsTest do
 
     vertex = Graph.get_vertex(graph,"Houston")
 
-    assert %Vertex{value: "Houston"} == vertex
+    assert %Vertex{name: "Houston"} == vertex
   end
 
   test "getting a non-existent vertex from the graph returns nil" do
