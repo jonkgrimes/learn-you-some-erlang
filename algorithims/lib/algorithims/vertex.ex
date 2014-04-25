@@ -8,4 +8,8 @@ defmodule Vertex do
     edge
   end
 
+  def neighbors(vertex) do
+    Enum.map(vertex.edges,fn (v) -> { [v.from] } end)
+  end
+
 end

@@ -12,8 +12,18 @@ defmodule VertexTest do
     assert edge.weight == 5
   end
 
-  test "get neighbors" do
-    flunk
+  test "get neighbors of a vertex" do
+    a = %Vertex{name: "A"}
+    b = %Vertex{name: "B"}
+    c = %Vertex{name: "C"}
+    
+    Vertex.add_edge(a,b,1)
+    Vertex.add_edge(b,c,1)
+    Vertex.add_edge(a,c,1)
+
+    assert Vertex.neighbors(a) == [b,c]
+    assert Vertex.neighbors(b) == [a,c]
+    assert Vertex.neighbors(c) == [a,b]
   end
 
 end
