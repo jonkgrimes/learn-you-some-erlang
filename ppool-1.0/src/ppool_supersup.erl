@@ -12,10 +12,6 @@ start_pool(Name, Limit, MFA) ->
                   permanent, 10500, supervisor, [ppool_sup]},
     supervisor:start_child(ppool, ChildSpec).
 
-stop_pool(Name) ->
-    supervisor:terminate_child(ppool, Name),
-    supervisor:delete_child(ppool, Name).
-
 init([]) ->
     MaxRestart = 6,
     MaxTime = 3000,
