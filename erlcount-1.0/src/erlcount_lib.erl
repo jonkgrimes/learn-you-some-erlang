@@ -15,7 +15,7 @@ find_erl(Name, Queue) ->
     _Other -> dequeue_and_run(Queue)
   end.
 
-handle_directory(Name, Queue) ->
+handle_directory(Dir, Queue) ->
   case file:list_dir(Dir) of
     {ok, []} ->
       dequeue_and_run(Queue);
